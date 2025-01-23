@@ -44,6 +44,7 @@
   # - deployment
   community.general.npm:
     path: /app
+  igrnore_errors: true
 
 - name: copy backend service
   ansible.builtin.template: #it will search in templates folder
