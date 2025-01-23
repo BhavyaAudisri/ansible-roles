@@ -38,7 +38,7 @@
   ignore_errors: true
 
 - name: copy backend service
-  ansible.builtin.copy: #it will search in templates folder
+  ansible.builtin.template: #it will search in templates folder
     src: backend.service.j2
     dest: /etc/systemd/system/backend.service
 
