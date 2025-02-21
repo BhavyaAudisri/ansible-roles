@@ -20,8 +20,8 @@
     dest: "{{ APP_LOCAION }}"
     remote_src: yes
 
-- name: unzip backend code
-  ansible.builtin.unarchive:
-    src: /tmp/backend.zip
-    dest: /app
-    remote_src: yes
+# - name: unzip backend code
+#   ansible.builtin.unarchive:
+#     src: /tmp/backend.zip
+#     dest: /app
+#     remote_src: yes
