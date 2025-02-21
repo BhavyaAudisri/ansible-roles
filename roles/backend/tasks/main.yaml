@@ -11,40 +11,39 @@
   loop:
   - nodejs
   - mysql
-  
+
 - name: create expense user
   ansible.builtin.user:
     name: expense
 
-# - name: include from common role
-#   # tags:
-#   # - deployment
-#   include_role:
-#     name: common
-#     tasks_from: main
+- name: include from common role
+  # tags: 
+  # - deployment
+  include_role:
+    name: common
+    tasks_from: main
 
-- name: create app directory
-  ansible.builtin.file:
-    path: /app
-    state: directory
+# - name: create app directory
+#   ansible.builtin.file:
+#     path: /app
+#     state: directory
 
-- name: download backend code
-  ansible.builtin.get_url:
-    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-    dest: /tmp/backend.zip
+# - name: download backend code
+#   ansible.builtin.get_url:
+#     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+#     dest: /tmp/backend.zip
 
-- name: unzip backend code
-  ansible.builtin.unarchive:
-    src: /tmp/backend.zip
-    dest: /app
-    remote_src: yes
+# - name: unzip backend code
+#   ansible.builtin.unarchive:
+#     src: /tmp/backend.zip
+#     dest: /app
+#     remote_src: yes
 
 - name: Install dependencies
-  tags:
+  tags: 
   - deployment
   community.general.npm:
     path: /app
-  ignore_errors: true
 
 - name: copy backend service
   ansible.builtin.template: #it will search in templates folder
@@ -64,12 +63,12 @@
     state: import
     name: all
     login_user: "{{ MYSQL_USER }}"
-    login_password: "{{ lookup('amazon.aws.aws_ssm', '/expense/mysql/mysql_root_password', decrypt=True ) }}"
+    login_password: "{{ MYSQL_PASSWORD }}"
     login_host: "{{ MYSQL_HOST }}"
     target: /app/schema/backend.sql
 
 - name: daemon reload and restart service
-  tags:
+  tags: 
   - deployment
   ansible.builtin.systemd_service:
     enabled: true
