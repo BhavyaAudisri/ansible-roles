@@ -6,6 +6,7 @@
   - cryptography
   - PyMySQL
   - botocore
+  - boto3
 
 - name: Install MySQL server
   ansible.builtin.package:
