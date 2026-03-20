@@ -9,7 +9,7 @@
 
 - name: Install boto3 and botocore (required for AWS lookup)
   ansible.builtin.pip:
-    name: "{ item }"
+    name: "{{ item }}"
     state: present
     become: yes
     executable: /usr/bin/pip3
