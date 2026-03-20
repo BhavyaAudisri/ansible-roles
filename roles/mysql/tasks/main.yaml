@@ -6,8 +6,6 @@
   loop:
   - cryptography
   - PyMySQL
-  - boto3
-  - botocore
 
 - name: Ensure pip3 is installed (OS package)
   ansible.builtin.package:
