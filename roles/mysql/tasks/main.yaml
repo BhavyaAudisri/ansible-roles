@@ -8,6 +8,7 @@
   - PyMySQL
   - boto3
   - botocore
+  - python3-pip
 
 - name: Install MySQL server
   ansible.builtin.package:
