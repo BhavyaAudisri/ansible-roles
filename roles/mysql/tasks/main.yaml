@@ -7,6 +7,16 @@
   - cryptography
   - PyMySQL
 
+- name: Install boto3 and botocore (required for AWS lookup)
+  ansible.builtin.pip:
+    name: "{ item }"
+    state: present
+    become: yes
+    executable: /usr/bin/pip3
+  loop:
+  - boto3
+  - botocore
+
 - name: Ensure pip3 is installed (OS package)
   ansible.builtin.package:
     name: pip
