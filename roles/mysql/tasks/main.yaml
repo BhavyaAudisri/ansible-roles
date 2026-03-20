@@ -2,7 +2,7 @@
   ansible.builtin.pip:
     name: "{{ item }}"
     state: latest
-    executable: /usr/bin/python3
+    executable: /usr/bin/pip3
   loop:
   - cryptography
   - PyMySQL
