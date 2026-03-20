@@ -2,7 +2,7 @@
   ansible.builtin.pip:
     name: "{{ item }}"
     state: latest
-    executable: /usr/bin/pip3.9
+    executable: pip3.9
   loop:
   - cryptography
   - PyMySQL
@@ -11,7 +11,7 @@
 
 - name: Ensure pip3 is installed (OS package)
   ansible.builtin.package:
-    name: python3-pip
+    name: pip
     state: present
 
 - name: Install MySQL server
